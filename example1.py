@@ -19,4 +19,4 @@ if __name__ == '__main__':
     # Вывод предложений с запятыми.
     for sentence in sentences:
         if "," in sentence:
-            print(sentence)
+            print(sentence + '.')
