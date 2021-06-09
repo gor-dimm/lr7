@@ -20,6 +20,7 @@ if __name__ == '__main__':
         # Выполнить действие в соответствие с командой.
         if command == 'exit':
             break
+
         elif command == 'add':
             # Запросить данные о человеке.
             name = input("Фамилия и имя? ")
@@ -57,6 +58,7 @@ if __name__ == '__main__':
                 print('| {:>4} | {:<30} | {:<20} | {:>15} |'.format(idx,
                 people.get('name', ''), people.get('zod', ''), people.get('birth', 0)))
             print(line)
+
         elif command.startswith('select '):
             parts = command.split(' ', maxsplit=1)
             sel = (parts[1])
@@ -80,7 +82,7 @@ if __name__ == '__main__':
             parts = command.split(' ', maxsplit=1)
             # Сохранить данные в файл JSON.
             with open(parts[1], 'w') as f:
-                json.dump(peoples, f)
+                json.dump(peoples, f, ensure_ascii=False)
 
         elif command == 'help':
             # Вывести справку о работе с программой.

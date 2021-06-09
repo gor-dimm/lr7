@@ -14,6 +14,7 @@ if __name__ == '__main__':
         # Выполнить действие в соответствие с командой.
         if command == 'exit':
             break
+
         elif command == 'add':
             # Запросить данные о работнике.
             name = input("Фамилия и инициалы? ")
@@ -30,6 +31,7 @@ if __name__ == '__main__':
             # Отсортировать список в случае необходимости.
             if len(workers) > 1:
                 workers.sort(key=lambda item: item.get('name', ''))
+
         elif command == 'list':
             # Заголовок таблицы.
             line = '+-{}-+-{}-+-{}-+-{}-+'.format(
@@ -60,6 +62,7 @@ if __name__ == '__main__':
                 )
             print(line)
             # Получить текущую дату
+
         elif command.startswith('select '):
             today = date.today()
             # Разбить команду на части для выделения номера года.
@@ -78,18 +81,21 @@ if __name__ == '__main__':
             # Если счетчик равен 0, то работники не найдены.
             if count == 0:
                 print("Работники с заданным стажем не найдены.")
+
         elif command.startswith('load '):
             # Разбить команду на части для выделения имени файла.
             parts = command.split(' ', maxsplit=1)
             # Прочитать данные из файла JSON.
             with open(parts[1], 'r') as f:
                 workers = json.load(f)
+
         elif command.startswith('save '):
             # Разбить команду на части для выделения имени файла.
             parts = command.split(' ', maxsplit=1)
             # Сохранить данные в файл JSON.
             with open(parts[1], 'w') as f:
-                json.dump(workers, f)
+                json.dump(workers, f, ensure_ascii=False)
+
         elif command == 'help':
             # Вывести справку о работе с программой.
             print("Список команд:\n")
